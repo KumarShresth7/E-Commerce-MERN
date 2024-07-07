@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link,useNavigation } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { getCurrentUser, logout } from '../utils/auth';
 
 const Navbar = () => {
-  const history = useNavigation();
+  const navigate = useNavigate();
   const handleLogout = () => {
     logout();
-    history.push('/login');
+    navigate('/login');
   };
 
   return (

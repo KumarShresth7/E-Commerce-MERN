@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { setAuthToken } from '../utils/auth';
 import { baseUrl } from '../baseUrl';
+import { useNavigate } from 'react-router-dom';
 
-const RegisterPage = ({ history }) => {
+const RegisterPage = () => {
+  const navigate = useNavigate()
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,7 +17,7 @@ const RegisterPage = ({ history }) => {
       const { token } = response.data;
       localStorage.setItem('token', token);
       setAuthToken(token);
-      history.push('/');
+      navigate('/');
     } catch (error) {
       console.error('Registration failed:', error);
     }

@@ -34,12 +34,13 @@ const loginUser = async(req,res)=>{
 }
 
 const getProfile = async(req,res)=>{
-    try {
-        const user = await User.findById(req.user.id).select('-password');
-        res.json(user);
-      } catch (err) {
-        res.status(500).json({ error: 'Server error' });
-      }
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) return res.status(404).send('User not found');
+    res.send(user);
+  } catch (error) {
+    res.status(500).send('Server error');
+  }
 }
 
 module.exports = {

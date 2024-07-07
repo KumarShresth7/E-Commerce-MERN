@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { setAuthToken } from '../utils/auth';
 import { baseUrl } from '../baseUrl';
+import { useNavigate } from 'react-router-dom';
 
-const LoginPage = ({ history }) => {
+const LoginPage = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,7 +16,7 @@ const LoginPage = ({ history }) => {
       const { token } = response.data;
       localStorage.setItem('token', token);
       setAuthToken(token);
-      history.push('/');
+      navigate('/');
     } catch (error) {
       console.error('Login failed:', error);
     }

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Product from './Product';
+import { baseUrl } from '../baseUrl';
 
 const ProductList = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/products')
+    axios.get(`${baseUrl}/api/products`)
       .then(response => setProducts(response.data))
       .catch(error => console.error(error));
   }, []);
