@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react';
+import ProductList from '../components/ProductList';
 
-const Home = () => {
+const Home = ({ addToCart }) => {
   return (
-    <div>Home</div>
-  )
-}
+    <div>
+      <h1>Home</h1>
+      <ProductList addToCart={addToCart} />
+    </div>
+  );
+};
 
-export default Home
+export default Home;
