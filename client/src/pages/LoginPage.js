@@ -1,11 +1,14 @@
+// frontend/src/pages/LoginPage.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { setAuthToken } from '../utils/auth';
 import { baseUrl } from '../baseUrl';
 import { useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/LoginPage.css'
 
 const LoginPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -23,16 +26,16 @@ const LoginPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} className="login-form">
+      <div className="mb-3">
         <label>Email:</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} required />
       </div>
-      <div>
+      <div className="mb-3">
         <label>Password:</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
       </div>
-      <button type="submit">Login</button>
+      <button type="submit" className="btn btn-primary w-100">Login</button>
     </form>
   );
 };

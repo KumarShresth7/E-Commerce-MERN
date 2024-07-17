@@ -1,0 +1,38 @@
+/* frontend/src/ProfilePage.css */
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-header h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+  
+  .profile-details {
+    font-size: 1.2em;
+  }
+  
+  .profile-details p {
+    margin-bottom: 10px;
+  }
+  
+  .profile-details label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .profile-details span {
+    color: #007bff;
+  }
+  

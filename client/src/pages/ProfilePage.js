@@ -1,6 +1,9 @@
+// frontend/src/pages/ProfilePage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { baseUrl } from '../baseUrl';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/ProfilePage.css';
 
 const ProfilePage = () => {
   const [user, setUser] = useState({});
@@ -19,10 +22,20 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Profile</h1>
-      <p>Name: {user.name}</p>
-      <p>Email: {user.email}</p>
+    <div className="container profile-container">
+      <div className="profile-header">
+        <h1 className="display-4">Profile</h1>
+      </div>
+      <div className="profile-details">
+        <p className="lead">
+          <label>Name:</label>
+          <span>{user.name}</span>
+        </p>
+        <p className="lead">
+          <label>Email:</label>
+          <span>{user.email}</span>
+        </p>
+      </div>
     </div>
   );
 };
