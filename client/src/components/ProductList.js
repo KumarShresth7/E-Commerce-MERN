@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Product from './Product';
 import { baseUrl } from '../baseUrl';
+import './styles/ProductList.css';
 
 const ProductList = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
@@ -13,10 +14,14 @@ const ProductList = ({ addToCart }) => {
   }, []);
 
   return (
-    <div>
-      {products.map(product => (
-        <Product key={product._id} product={product} addToCart={addToCart} />
-      ))}
+    <div className="container mt-5">
+      <div className="row">
+        {products.map(product => (
+          <div key={product._id} className="col-md-4 mb-4">
+            <Product product={product} addToCart={addToCart} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

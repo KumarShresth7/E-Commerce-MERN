@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { baseUrl } from '../baseUrl';
+import './styles/CreateProductPage.css';
 
 const CreateProductPage = () => {
   const [name, setName] = useState('');
@@ -32,46 +33,52 @@ const CreateProductPage = () => {
   };
 
   return (
-    <div>
-      <h1>Add Product</h1>
-      {message && <p>{message}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">Add Product</h1>
+      {message && <p className="text-center message">{message}</p>}
+      <form onSubmit={handleSubmit} className="product-form">
+        <div className="form-group">
           <label>Name:</label>
           <input
             type="text"
+            className="form-control"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Description:</label>
           <textarea
+            className="form-control"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Price:</label>
           <input
             type="number"
+            className="form-control"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Image URL:</label>
           <input
             type="text"
+            className="form-control"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             required
           />
         </div>
-        <button type="submit">Add Product</button>
+        <button type="submit" className="btn btn-primary btn-block">
+          Add Product
+        </button>
       </form>
     </div>
   );

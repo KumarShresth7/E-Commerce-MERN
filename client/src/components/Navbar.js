@@ -25,6 +25,9 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/cart">Cart</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/create-product">Add Product</Link>
+            </li>
             {getCurrentUser() ? (
               <>
                 <li className="nav-item">

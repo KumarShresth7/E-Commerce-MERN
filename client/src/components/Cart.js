@@ -1,15 +1,20 @@
 import React from 'react';
+import './styles/Cart.css';
 
 const Cart = ({ cartItems, removeFromCart }) => {
   return (
-    <div>
-      <h2>Cart</h2>
-      {cartItems.length === 0 ? <p>No items in cart</p> : (
+    <div className="cart-container container mt-5">
+      <h2 className="cart-title">Cart</h2>
+      {cartItems.length === 0 ? (
+        <p className="cart-empty">No items in cart</p>
+      ) : (
         cartItems.map(item => (
-          <div key={item._id}>
-            <h3>{item.name}</h3>
-            <p>${item.price}</p>
-            <button onClick={() => removeFromCart(item)}>Remove</button>
+          <div key={item._id} className="cart-item card mb-3 shadow-sm">
+            <div className="card-body">
+              <h3 className="card-title">{item.name}</h3>
+              <p className="card-text">₹{item.price}</p>
+              <button className="btn btn-danger" onClick={() => removeFromCart(item)}>Remove</button>
+            </div>
           </div>
         ))
       )}

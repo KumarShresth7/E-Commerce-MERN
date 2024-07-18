@@ -4,7 +4,7 @@ import ProductList from '../components/ProductList';
 const Home = ({ addToCart }) => {
   return (
     <div>
-      <h1>Home</h1>
+      {/* <h1>Home</h1> */}
       <ProductList addToCart={addToCart} />
     </div>
   );
