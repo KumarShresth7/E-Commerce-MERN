@@ -8,6 +8,8 @@ import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import { setAuthToken, getCurrentUser } from './utils/auth';
 import { jwtDecode } from 'jwt-decode';
+// import ProductPage from './pages/ProductPage';
+import CreateProductPage from './pages/CreateProductPage';
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -39,6 +41,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/create-product" element={<CreateProductPage />}/>
       </Routes>
     </Router>
   );
