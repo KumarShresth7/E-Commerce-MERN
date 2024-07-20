@@ -49,12 +49,8 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = async (product) => {
     try {
-      const response = await axios.post(
-        `${baseUrl}/api/cart/remove`,
-        { productId: product._id },
-        getAuthHeaders()
-      );
-      setCartItems(response.data.items || []);
+      const response = await axios.post(`${baseUrl}/api/cart/remove`, { productId: product._id },getAuthHeaders());
+      setCartItems(response.data); // Update state with the updated cart
     } catch (error) {
       console.error('Failed to remove from cart:', error);
     }

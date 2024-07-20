@@ -4,8 +4,8 @@ import React from 'react';
 import './styles/Cart.css';
 
 const Cart = ({ cartItems, removeFromCart }) => {
-  console.log('cartItems:', cartItems); // Log for debugging
-  console.log('Type of cartItems:', typeof cartItems); // Log for debugging
+  // console.log('cartItems:', cartItems); // Log for debugging
+  // console.log('Type of cartItems:', typeof cartItems); // Log for debugging
 
   if (!Array.isArray(cartItems)) {
     return (
