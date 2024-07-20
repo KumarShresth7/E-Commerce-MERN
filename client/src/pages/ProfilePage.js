@@ -11,7 +11,12 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/api/auth/profile`);
+        const token = localStorage.getItem('token'); // Retrieve token from localStorage
+        const response = await axios.get(`${baseUrl}/api/auth/profile`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in the request header
+          },
+        });
         setUser(response.data);
       } catch (error) {
         console.error('Failed to fetch user:', error);
