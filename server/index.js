@@ -23,6 +23,7 @@ app.use('/api/auth',require('./routes/authRouter'))
 app.use('/api/products',require('./routes/productRouter'))
 app.use('/api/orders',require('./routes/orderRouter'))
 app.use('/api/cart',require('./routes/cartRouter'))
+app.use('/api/payment-intent',require('./routes/paymentRouter'))
 
 const PORT = process.env.PORT||5000
 app.listen(PORT,()=>console.log(`Server is running on port ${PORT}`))
