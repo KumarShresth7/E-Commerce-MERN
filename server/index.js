@@ -22,6 +22,7 @@ mongoose.connect(process.env.MONGO_URI)
 app.use('/api/auth',require('./routes/authRouter'))
 app.use('/api/products',require('./routes/productRouter'))
 app.use('/api/orders',require('./routes/orderRouter'))
+app.use('/api/cart',require('./routes/cartRouter'))
 
 const PORT = process.env.PORT||5000
 app.listen(PORT,()=>console.log(`Server is running on port ${PORT}`))
