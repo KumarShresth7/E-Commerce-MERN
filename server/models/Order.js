@@ -16,6 +16,7 @@ const OrderSchema = new mongoose.Schema({
   ],
   totalPrice: { type: Number, required: true },
   isPaid: { type: Boolean, required: true, default: false },
+  createdAt: {type:Date,default:Date.now}
 });
 
 module.exports = mongoose.model('Order', OrderSchema);
