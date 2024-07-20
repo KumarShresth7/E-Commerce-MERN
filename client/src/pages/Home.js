@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+// frontend/src/pages/Home.js
+import React from 'react';
+import { useCart } from '../context/CartContext';
 import ProductList from '../components/ProductList';
 
-const Home = ({ addToCart }) => {
+const Home = () => {
+  const { addToCart } = useCart();
+
   return (
     <div>
       {/* <h1>Home</h1> */}

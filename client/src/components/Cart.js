@@ -1,7 +1,21 @@
+// frontend/src/components/Cart.js
+
 import React from 'react';
 import './styles/Cart.css';
 
 const Cart = ({ cartItems, removeFromCart }) => {
+  console.log('cartItems:', cartItems); // Log for debugging
+  console.log('Type of cartItems:', typeof cartItems); // Log for debugging
+
+  if (!Array.isArray(cartItems)) {
+    return (
+      <div className="cart-container container mt-5">
+        <h2 className="cart-title">Cart</h2>
+        <p>Unexpected error: cartItems is not an array</p>
+      </div>
+    );
+  }
+
   return (
     <div className="cart-container container mt-5">
       <h2 className="cart-title">Cart</h2>
@@ -11,8 +25,8 @@ const Cart = ({ cartItems, removeFromCart }) => {
         cartItems.map(item => (
           <div key={item._id} className="cart-item card mb-3 shadow-sm">
             <div className="card-body">
-              <h3 className="card-title">{item.name}</h3>
-              <p className="card-text">₹{item.price}</p>
+              <h3 className="card-title">{item.product.name}</h3>
+              <p className="card-text">₹{item.product.price}</p>
               <button className="btn btn-danger" onClick={() => removeFromCart(item)}>Remove</button>
             </div>
           </div>

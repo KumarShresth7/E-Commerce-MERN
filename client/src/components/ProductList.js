@@ -10,8 +10,8 @@ const ProductList = ({ addToCart }) => {
   useEffect(() => {
     axios.get(`${baseUrl}/api/products`)
       .then(response => setProducts(response.data))
-      .catch(error => console.error(error));
-  }, []);
+      .catch(error => console.error(error))
+  }, [])
 
   return (
     <div className="container mt-5">
