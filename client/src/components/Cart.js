@@ -27,6 +27,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
             <div className="card-body">
               <h3 className="card-title">{item.product.name}</h3>
               <p className="card-text">₹{item.product.price}</p>
+              <p className="card-text">Quantity: {item.quantity}</p>
               <button className="btn btn-danger" onClick={() => removeFromCart(item)}>Remove</button>
             </div>
           </div>
