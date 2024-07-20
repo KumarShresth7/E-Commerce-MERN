@@ -1,0 +1,16 @@
+/* frontend/src/components/styles/Logo.css */
+.logo {
+    font-family: 'Arial', sans-serif; /* Customize font as needed */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff; /* White color for the text */
+  }
+  
+  .logo-text {
+    color: #00bfae; /* Teal color for 'Shope' */
+  }
+  
+  .logo-luxe {
+    color: #f5a623; /* Gold color for 'Luxe' */
+  }
+  

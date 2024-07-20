@@ -45,7 +45,7 @@ const addToCart = async (req, res) => {
   }
 }
 
-const deleteFromCart = async()=>{
+const deleteFromCart = async(req,res)=>{
     const { productId } = req.body;
 
   try {
