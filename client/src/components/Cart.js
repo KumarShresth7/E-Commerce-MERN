@@ -1,11 +1,12 @@
 // frontend/src/components/Cart.js
-
 import React from 'react';
 import './styles/Cart.css';
 
 const Cart = ({ cartItems, removeFromCart }) => {
-  // console.log('cartItems:', cartItems); // Log for debugging
-  // console.log('Type of cartItems:', typeof cartItems); // Log for debugging
+  const handleRemove = (item) => {
+    console.log('Removing item:', item); // Log item to be removed
+    removeFromCart(item);
+  };
 
   if (!Array.isArray(cartItems)) {
     return (
@@ -28,7 +29,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
               <h3 className="card-title">{item.product.name}</h3>
               <p className="card-text">₹{item.product.price}</p>
               <p className="card-text">Quantity: {item.quantity}</p>
-              <button className="btn btn-danger" onClick={() => removeFromCart(item)}>Remove</button>
+              <button className="btn btn-danger" onClick={() => handleRemove(item)}>Remove</button>
             </div>
           </div>
         ))

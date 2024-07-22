@@ -9,6 +9,6 @@ const auth = require('../middleware/auth')
 
 router.get('/',auth,getCart)
 router.post('/add',auth,addToCart)
-router.post('/remove',auth,deleteFromCart)
+router.delete('/remove',auth,deleteFromCart)
 
 module.exports = router
