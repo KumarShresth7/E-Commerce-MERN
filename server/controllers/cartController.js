@@ -45,28 +45,53 @@ const addToCart = async (req, res) => {
   }
 }
 
-const deleteFromCart = async (req, res) => {
-  const { productId } = req.body;
+const removeFromCart = async (req, res) => {
+  console.log('Request body:', req.body)
+  const { productId, quantity } = req.body;
+  
+  // Validate input
+  if (!productId || !quantity) {
+    return res.status(400).json({ error: 'Product ID and quantity are required' });
+  }
 
   try {
-    let cart = await Cart.findOne({ user: req.user.id });
+    // Find the cart for the authenticated user
+    const cart = await Cart.findOne({ user: req.user.id });
 
     if (!cart) {
-      return res.status(404).json({ message: 'Cart not found' });
+      return res.status(404).json({ error: 'Cart not found' });
     }
 
-    cart.items = cart.items.filter(item => !item.product.equals(productId));
-    await cart.save();
+    // Find the item to be removed
+    const itemIndex = cart.items.findIndex(item => item.product.equals(productId));
 
-    res.json(cart);
+    if (itemIndex === -1) {
+      return res.status(404).json({ error: 'Item not found in cart' });
+    }
+
+    // Check if the quantity is greater than or equal to the item quantity in the cart
+    if (cart.items[itemIndex].quantity <= quantity) {
+      // Remove item if quantity is less than or equal
+      cart.items.splice(itemIndex, 1);
+    } else {
+      // Decrease quantity
+      cart.items[itemIndex].quantity -= quantity;
+    }
+
+    // Save the updated cart
+    await cart.save();
+    res.json({ items: cart.items });
   } catch (error) {
     console.error('Error removing from cart:', error);
     res.status(500).json({ error: 'Server error' });
   }
-}
+};
+
+
+
 
 module.exports = {
     getCart,
     addToCart,
-    deleteFromCart
+    removeFromCart
 }

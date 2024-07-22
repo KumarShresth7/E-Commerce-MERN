@@ -1,4 +1,3 @@
-// frontend/src/context/CartContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { baseUrl } from '../baseUrl';
@@ -11,6 +10,7 @@ export const useCart = () => {
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem('token');
+  // console.log(token)
   return {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -34,20 +34,34 @@ export const CartProvider = ({ children }) => {
     fetchCartItems();
   }, []);
 
-  const removeFromCart = async (product) => {
+  const addToCart = async (product) => {
     try {
-      const response = await axios.delete(`${baseUrl}/api/cart/remove`, {
-        headers: getAuthHeaders().headers,
-        data: { productId: product._id },
-      });
+      const response = await axios.post(`${baseUrl}/api/cart/add`, 
+        { productId: product._id, quantity: 1 }, // Include quantity in the request
+        getAuthHeaders()
+      );
       setCartItems(response.data.items || []);
     } catch (error) {
-      console.error('Failed to remove from cart:', error);
+      console.error('Failed to add to cart:', error.response ? error.response.data : error.message);
     }
   };
+  
+
+  const removeFromCart = async (productId, quantity) => {
+    console.log('Removing product with ID:', productId, 'and quantity:', quantity)
+    try {
+      const response = await axios.post(`${baseUrl}/api/cart/remove`, { productId, quantity }, getAuthHeaders());
+      setCartItems(response.data.items || []);
+    } catch (error) {
+      console.error('Failed to remove from cart:', error.response ? error.response.data : error.message);
+    }
+  };
+  
+  
+  
 
   return (
-    <CartContext.Provider value={{ cartItems, removeFromCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );

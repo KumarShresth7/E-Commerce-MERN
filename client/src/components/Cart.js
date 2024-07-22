@@ -5,7 +5,7 @@ import './styles/Cart.css';
 const Cart = ({ cartItems, removeFromCart }) => {
   const handleRemove = (item) => {
     console.log('Removing item:', item); // Log item to be removed
-    removeFromCart(item);
+    removeFromCart(item._id,1);
   };
 
   if (!Array.isArray(cartItems)) {
