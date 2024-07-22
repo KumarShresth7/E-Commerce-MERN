@@ -27,19 +27,23 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <div className="container profile-container">
-      <div className="profile-header">
-        <h1 className="display-4">Profile</h1>
-      </div>
-      <div className="profile-details">
-        <p className="lead">
-          <label>Name:</label>
-          <span>{user.name}</span>
-        </p>
-        <p className="lead">
-          <label>Email:</label>
-          <span>{user.email}</span>
-        </p>
+    <div className="profile-page">
+      <div className="container profile-container">
+        <div className="profile-header">
+          <h1 className="display-4">Profile</h1>
+        </div>
+        <div className="profile-details card shadow-sm">
+          <div className="card-body">
+            <p className="lead">
+              <label>Name:</label>
+              <span>{user.name}</span>
+            </p>
+            <p className="lead">
+              <label>Email:</label>
+              <span>{user.email}</span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
