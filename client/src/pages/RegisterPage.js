@@ -20,7 +20,7 @@ const RegisterPage = () => {
       const { token } = response.data;
       localStorage.setItem('token', token);
       setAuthToken(token);
-      navigate('/');
+      navigate('/home');
     } catch (error) {
       console.error('Registration failed:', error);
     }

@@ -1,11 +1,10 @@
-// frontend/src/pages/CheckoutPage.js
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 import { baseUrl } from '../baseUrl';
-import './styles/Checkout.css'
+import './styles/Checkout.css';
 
 // Load your Stripe public key here
 const stripePromise = loadStripe('pk_test_51PehJtRrfwW2nFTQFma7DnbLR0RJiGVTgO74xNZ6D98NdMJPs2vgpHpi5AL4A4PjGufTjUibhvvFICSOPBmW76Ok00rNHz2eN9');
@@ -64,30 +63,36 @@ const CheckoutPage = () => {
 
   return (
     <div className="container mt-5">
-      <h2>Checkout</h2>
-      {success ? (
-        <p>Order placed successfully!</p>
-      ) : (
-        <>
-          <div className="cart-summary">
-            <h3>Cart Summary</h3>
-            {cartItems.map(item => (
-              <div key={item._id} className="cart-item">
-                <p>{item.product.name} x {item.quantity} - ₹{item.product.price * item.quantity}</p>
-              </div>
-            ))}
-            <h4>Total Price: ₹{totalPrice}</h4>
+      <div className="checkout-wrapper">
+        <h2 className="checkout-title">Checkout</h2>
+        {success ? (
+          <div className="order-success">
+            <p>Order placed successfully!</p>
           </div>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="card-element">Credit or debit card</label>
-              <CardElement id="card-element" />
+        ) : (
+          <>
+            <div className="cart-summary">
+              <h3>Cart Summary</h3>
+              {cartItems.map(item => (
+                <div key={item._id} className="cart-item">
+                  <p>{item.product.name} x {item.quantity} - ₹{item.product.price * item.quantity}</p>
+                </div>
+              ))}
+              <h4>Total Price: ₹{totalPrice}</h4>
             </div>
-            <button type="submit" className="btn btn-primary mt-3" disabled={!stripe}>Pay</button>
-            {error && <p className="text-danger mt-3">{error}</p>}
-          </form>
-        </>
-      )}
+            <form onSubmit={handleSubmit} className="payment-form">
+              <div className="form-group">
+                <label htmlFor="card-element">Credit or Debit Card</label>
+                <div className="card-element-wrapper">
+                  <CardElement id="card-element" />
+                </div>
+              </div>
+              <button type="submit" className="btn btn-primary mt-3" disabled={!stripe}>Pay</button>
+              {error && <p className="text-danger mt-3">{error}</p>}
+            </form>
+          </>
+        )}
+      </div>
     </div>
   );
 };

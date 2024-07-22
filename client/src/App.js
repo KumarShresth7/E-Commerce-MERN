@@ -22,10 +22,10 @@ const App = () => {
       <CartProvider>
         <Elements stripe={stripePromise}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home/>} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} /> {/* Add CheckoutPage route */}
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/create-product" element={<CreateProductPage />} />

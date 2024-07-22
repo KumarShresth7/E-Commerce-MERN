@@ -1,0 +1,44 @@
+/* frontend/src/components/styles/Navbar.css */
+/* In Navbar.css or a global CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500&display=swap');
+.navbar-nav .nav-item .nav-link {
+    font-family: 'Roboto', sans-serif; /* Use a stylish font */
+    font-size: 1.1rem;
+    color: #fff;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navbar-nav .nav-item .nav-link:hover {
+    color: #ffdd57; /* Change color on hover */
+  }
+  
+  .navbar-nav .nav-item .btn-link.nav-link {
+    font-family: 'Roboto', sans-serif; /* Use the same font for button links */
+    font-size: 1.1rem;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .navbar-nav .nav-item .btn-link.nav-link:hover {
+    color: #ffdd57; /* Change color on hover */
+  }
+  
+  /* Additional styling to make the navbar more appealing */
+  .navbar {
+    padding: 1rem 2rem;
+  }
+  
+  .navbar-brand {
+    font-family: 'Pacifico', cursive; /* Use a different stylish font for the brand */
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  
+  .navbar-brand:hover {
+    color: #ffdd57; /* Change color on hover */
+  }
+  
+  .navbar-toggler-icon {
+    filter: invert(1);
+  }
+  

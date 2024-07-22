@@ -3,13 +3,14 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getCurrentUser, logout } from '../utils/auth';
 import Logo from './Logo'; // Import the Logo component
+import './styles/Navbar.css'; // Import the CSS file for styling
 
 const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/');
   };
 
   return (
@@ -24,7 +25,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link" to="/home">Home</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/cart">Cart</Link>
@@ -44,7 +45,7 @@ const Navbar = () => {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/login">Login</Link>
+                  <Link className="nav-link" to="/">Login</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/register">Register</Link>
