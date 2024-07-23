@@ -1,4 +1,3 @@
-// frontend/src/components/ProductList.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Product from './Product';
@@ -36,7 +35,7 @@ const ProductList = ({ addToCart }) => {
       </div>
       <div className="row">
         {filteredProducts.map(product => (
-          <div key={product._id} className="col-md-4 mb-4">
+          <div key={product._id} className="col-md-4">
             <Product product={product} addToCart={addToCart} />
           </div>
         ))}

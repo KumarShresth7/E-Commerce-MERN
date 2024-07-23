@@ -1,21 +1,89 @@
-/* styles/ProductList.css */
+/* Product List Container */
+.product-list-container {
+  width: 100%;
+  padding: 1rem;
+}
 
-.container {
-    padding: 20px;
-  }
-  
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
+/* Row Styling */
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap onto the next line */
+  gap: 2rem; /* Space between columns */
+}
+
+/* Column Styling */
+.col-md-4 {
+  flex: 1 1 calc(33.333% - 1rem); /* Adjust width for three columns with gap */
+  max-width: calc(33.333% - 1rem); /* Prevent columns from exceeding this width */
+  margin: 2rem;
+  box-sizing: border-box; /* Includes padding and border in width/height calculation */
+}
+
+/* Product Card Styling */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%; /* Ensure card takes full height of column */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px; /* Fixed height for images */
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space between title, price, and button */
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.card-text {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .col-md-4 {
-    max-width: 300px;
-    margin-bottom: 20px;
+    flex: 1 1 100%; /* Stack columns in a single column on smaller screens */
+    max-width: 100%;
   }
-  
-  .product-list-container .search-bar {
-    max-width: 600px;
-    margin: 0 auto;
+
+  .product-image {
+    height: 150px; /* Adjust image height for smaller screens */
   }
+}
