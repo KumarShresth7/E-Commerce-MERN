@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
     // console.log('Adding to cart:', productId);
     // console.log('Quantity', quantity)
     try {
-      const response = await axios.post(
+         await axios.post(
         `${baseUrl}/api/cart/add`,
         { productId, quantity },
         getAuthHeaders()
@@ -50,7 +50,7 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = async (productId, quantity) => {
     try {
-      const response = await axios.post(`${baseUrl}/api/cart/remove`, { productId, quantity }, getAuthHeaders());
+      await axios.post(`${baseUrl}/api/cart/remove`, { productId, quantity }, getAuthHeaders());
       fetchCartItems();
     } catch (error) {
       console.error('Failed to remove from cart:', error);

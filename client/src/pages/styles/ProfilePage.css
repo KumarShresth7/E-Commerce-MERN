@@ -22,6 +22,7 @@
   color: white;
   padding: 20px;
   text-align: center;
+  border-bottom: 2px solid #ddd; /* Optional: Add a subtle border at the bottom */
 }
 
 .profile-details {
@@ -33,10 +34,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
+  border-bottom: 1px solid #ddd; /* Optional: Add a border to separate items */
 }
 
 .profile-details label {
   font-weight: bold;
+  color: #333; /* Darken label color for better readability */
 }
 
 .profile-details span {
@@ -52,8 +55,27 @@
   padding: 20px;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .profile-container {
     margin: 20px;
+    padding: 10px; /* Add padding inside container */
+  }
+
+  .profile-header {
+    padding: 15px;
+    font-size: 1.25rem; /* Adjust font size on smaller screens */
+  }
+
+  .profile-details {
+    padding: 15px; /* Adjust padding on smaller screens */
+  }
+
+  .profile-details .lead {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+  }
+
+  .profile-details label, .profile-details span {
+    font-size: 0.9rem; /* Adjust font size for better readability */
   }
 }
