@@ -1,5 +1,6 @@
 const express = require('express')
 const Cart = require('../models/Cart')
+const Product = require('../models/Product')
 
 const getCart = async (req, res) => {
   try {
@@ -15,30 +16,34 @@ const getCart = async (req, res) => {
 
 
 const addToCart = async (req, res) => {
-  const { productId, quantity } = req.body;
-  const userId = req.user._id;
-
-  if (!productId || !quantity) {
-    return res.status(400).json({ error: 'Product ID and quantity are required' });
-  }
-
   try {
-    let cart = await Cart.findOne({ user: userId });
+    // console.log('Request Body:', req.body)
+    const { productId, quantity } = req.body;
 
-    if (!cart) {
-      cart = new Cart({ user: userId, items: [] });
+    if (!productId || !quantity) {
+      return res.status(400).json({ error: 'Product ID and quantity are required' });
     }
 
-    const itemIndex = cart.items.findIndex(item => item.product.toString() === productId);
+    const cart = await Cart.findOne({ user: req.user._id });
+    const product = await Product.findById(productId);
 
-    if (itemIndex > -1) {
-      cart.items[itemIndex].quantity += quantity;
-    } else {
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    const itemIndex = cart.items.findIndex(item => item.product.equals(productId));
+
+    if (itemIndex === -1) {
+      // Product not in cart, add new item
       cart.items.push({ product: productId, quantity });
+    } else {
+      // Product already in cart, update quantity
+      cart.items[itemIndex].quantity += quantity;
     }
 
     await cart.save();
-    res.json(cart);
+    res.status(200).json(cart);
+
   } catch (error) {
     console.error('Error adding to cart:', error);
     res.status(500).json({ error: 'Server error' });
@@ -46,7 +51,7 @@ const addToCart = async (req, res) => {
 }
 
 const removeFromCart = async (req, res) => {
-  console.log('Request body:', req.body)
+  // console.log('Request body:', req.body)
   const { productId, quantity } = req.body;
   
   // Validate input

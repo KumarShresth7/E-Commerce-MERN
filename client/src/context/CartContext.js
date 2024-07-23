@@ -34,8 +34,14 @@ export const CartProvider = ({ children }) => {
   }, []);
 
   const addToCart = async (productId, quantity) => {
+    // console.log('Adding to cart:', productId);
+    // console.log('Quantity', quantity)
     try {
-      const response = await axios.post(`${baseUrl}/api/cart/add`, { productId, quantity }, getAuthHeaders());
+      const response = await axios.post(
+        `${baseUrl}/api/cart/add`,
+        { productId, quantity },
+        getAuthHeaders()
+      );
       fetchCartItems();
     } catch (error) {
       console.error('Failed to add to cart:', error);
