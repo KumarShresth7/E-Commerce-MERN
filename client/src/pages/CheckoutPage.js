@@ -7,7 +7,7 @@ import { baseUrl } from '../baseUrl';
 import './styles/Checkout.css';
 
 // Load your Stripe public key here
-const stripePromise = loadStripe('pk_test_51PehJtRrfwW2nFTQFma7DnbLR0RJiGVTgO74xNZ6D98NdMJPs2vgpHpi5AL4A4PjGufTjUibhvvFICSOPBmW76Ok00rNHz2eN9');
+loadStripe('pk_test_51PehJtRrfwW2nFTQFma7DnbLR0RJiGVTgO74xNZ6D98NdMJPs2vgpHpi5AL4A4PjGufTjUibhvvFICSOPBmW76Ok00rNHz2eN9');
 
 const CheckoutPage = () => {
   const { cartItems, removeFromCart } = useCart();
