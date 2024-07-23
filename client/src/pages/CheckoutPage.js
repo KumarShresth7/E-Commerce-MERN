@@ -10,7 +10,7 @@ import './styles/Checkout.css';
 loadStripe('pk_test_51PehJtRrfwW2nFTQFma7DnbLR0RJiGVTgO74xNZ6D98NdMJPs2vgpHpi5AL4A4PjGufTjUibhvvFICSOPBmW76Ok00rNHz2eN9');
 
 const CheckoutPage = () => {
-  const { cartItems } = useCart();
+  const { cartItems,setCartItems } = useCart();
   const [totalPrice, setTotalPrice] = useState(0);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);

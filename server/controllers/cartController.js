@@ -17,7 +17,7 @@ const getCart = async (req, res) => {
 
 const addToCart = async (req, res) => {
   try {
-    // console.log('Request Body:', req.body)
+    console.log('Request Body:', req.body)
     const { productId, quantity } = req.body;
 
     if (!productId || !quantity) {
