@@ -1,11 +1,10 @@
-// frontend/src/components/Cart.js
 import React from 'react';
 import './styles/Cart.css';
 
 const Cart = ({ cartItems, removeFromCart }) => {
   const handleRemove = (item) => {
     console.log('Removing item:', item); // Log item to be removed
-    removeFromCart(item._id,1);
+    removeFromCart(item.product._id, 1);
   };
 
   if (!Array.isArray(cartItems)) {
@@ -24,7 +23,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
         <p className="cart-empty">No items in cart</p>
       ) : (
         cartItems.map(item => (
-          <div key={item._id} className="cart-item card mb-3 shadow-sm">
+          <div key={item.product._id} className="cart-item card mb-3 shadow-sm">
             <div className="card-body">
               <h3 className="card-title">{item.product.name}</h3>
               <p className="card-text">₹{item.product.price}</p>
