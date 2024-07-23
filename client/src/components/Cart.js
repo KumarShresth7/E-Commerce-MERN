@@ -1,7 +1,10 @@
 import React from 'react';
+import { useCart } from '../context/CartContext';
 import './styles/Cart.css';
 
-const Cart = ({ cartItems, removeFromCart }) => {
+const Cart = () => {
+  const { cartItems, removeFromCart } = useCart();
+
   const handleRemove = (item) => {
     console.log('Removing item:', item); // Log item to be removed
     removeFromCart(item.product._id, 1);
