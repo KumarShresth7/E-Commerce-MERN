@@ -1,2 +1,2 @@
-const baseUrl = 'https://e-commerce-mern-neon.vercel.app'
+const baseUrl = 'http://localhost:3000'
 module.exports = baseUrl
